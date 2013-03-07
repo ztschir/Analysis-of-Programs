@@ -1,0 +1,53 @@
+
+% initialize maxValue
+maxValue = 0;
+
+
+% input arrays 
+A = [1,3,2,5,4,3,5,8];
+B = [2,3,5,8,1,3,6,4,7,8];
+
+
+% Reverse the arrays
+Areversed = fliplr(A);
+Breversed = fliplr(B);
+
+
+% Create a blank matrix
+matrix = zeros(size(Areversed), size(Breversed));
+
+
+% Iterate through each element of Areversed
+for i = 1:length(Areversed)
+    
+    % Iterate through each element of Breversed
+    for j = 1:length(Breversed)
+        
+        % Look for elements that are the same
+        if(Areversed(i) == Breversed(j))
+            
+            % Call function getMax and send a sub array size i-1 by j-1
+            %   then add one and set it to the temporary max
+            max = getMax(matrix(1:i-1,1:j-1)) + 1;
+            
+            % Set the matrix value at i,j to the max var (max found + 1)
+            matrix(i,j) = max;
+            
+            % Now, if this max happens to be bigger than the global max
+            % then go ahead and replace that value.
+            if(max > maxValue)
+                maxValue = max;
+            end
+        else
+            % If there is no match, go ahead and set the value to zero
+            matrix(i,j) = 0;
+        end
+    end
+end
+
+
+disp(Breversed)	
+disp(' ')
+disp(printMatrix)
+
+maximumLengthSubsequenceOfTwoVectors = maxValue

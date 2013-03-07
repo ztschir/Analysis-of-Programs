@@ -1,0 +1,15 @@
+function max = getMax(matrix)
+
+% initalize max
+max = 0;
+
+%find
+[Asize, Bsize] = size(matrix);
+
+for i = 1:Asize
+    for j = 1:Bsize
+        if(matrix(i, j) > x)
+            max = matrix(i,j);
+        end
+    end
+end
